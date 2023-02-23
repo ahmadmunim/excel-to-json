@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Spreadsheet to JSON converter</h1>
+    <h3>Drag and drop the spreadsheet file in the box below</h3>
+    <div id="drop-zone">
+    </div>
+    <textarea id="text-area" class="form-control"></textarea>
+    <button id="save-json">Save JSON file</div>
+    <!-- <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById('text-area'), {
+            mode: "xml",
+            theme: "dracula"
+        });
+    </script> -->
+    <script src="./renderer.js" defer></script>
+</body>
+</html>
