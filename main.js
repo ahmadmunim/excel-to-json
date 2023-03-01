@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain, electron } = require('electron');
+const { dialog } = require('electron');
 const { lstatSync } = require('fs');
 
 const fs = require('fs')
@@ -43,15 +44,59 @@ ipcMain.on('excel-path', (e, path) => {
             }
             i++;
         })
-
-        // fs.writeFile('data.json', JSON.stringify(jsonRow), (err) => {
-        //     if (err)
-        //         throw err
-        // })
         e.sender.send('send-json', jsonRow)
     })   
 })
 
-function excelToJSON(path) {
-
-}
+ipcMain.on('text', (_, text) => {
+    dialog.showSaveDialog({
+        title: 'Select the File Path to save',
+        defaultPath: path.join(__dirname, '../sample.json'),
+        // defaultPath: path.join(__dirname, '../assets/'),
+        buttonLabel: 'Save',
+        // Restricting the user to only Text Files.
+        filters: [
+            {
+                name: 'json',
+                extensions: ['json']
+            }, ],
+        properties: []
+    }).then(file => {
+        // Stating whether dialog operation was cancelled or not.
+        console.log(file.canceled);
+        if (!file.canceled) {
+            console.log(file.filePath.toString());
+              
+            // Creating and Writing to the sample.txt file
+            fs.writeFile(file.filePath.toString(), 
+                         text, function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+            });
+        }
+    }).catch(err => {
+        console.log(err)
+    });
+    // dialog.showSaveDialog({
+    //     title: 'Select the File Path to save',
+    //     defaultPath: path.join(__dirname, '../data.json'),
+    //     buttonLabel: 'Save',
+    //     filters: [
+    //         {
+    //             name:'txt',
+    //             extensions:['txt']
+    //         }
+    //     ]
+    // }, function (fileName) {
+    //     if (fileName === undefined) {
+    //         return;
+    //     }
+    //     fs.writeFile(fileName, text, (err) => {
+    //         if (err) {
+    //             throw err;
+    //         }
+    //         console.log('saved');
+    //     })
+    // })
+    // console.log('went over showsavedialog')
+})
