@@ -77,26 +77,4 @@ ipcMain.on('text', (_, text) => {
     }).catch(err => {
         console.log(err)
     });
-    // dialog.showSaveDialog({
-    //     title: 'Select the File Path to save',
-    //     defaultPath: path.join(__dirname, '../data.json'),
-    //     buttonLabel: 'Save',
-    //     filters: [
-    //         {
-    //             name:'txt',
-    //             extensions:['txt']
-    //         }
-    //     ]
-    // }, function (fileName) {
-    //     if (fileName === undefined) {
-    //         return;
-    //     }
-    //     fs.writeFile(fileName, text, (err) => {
-    //         if (err) {
-    //             throw err;
-    //         }
-    //         console.log('saved');
-    //     })
-    // })
-    // console.log('went over showsavedialog')
 })
