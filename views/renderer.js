@@ -29,7 +29,7 @@ window.api.recieveJSON((e, jsonRow) => {
 
 // saves json file onto machine
 saveJsonButton.addEventListener("click", (e) => {
-    let txtArea = document.getElementById('text-area').innerHTML
+    let txtArea = document.getElementById('text-area').value
     window.api.sendFinal(txtArea)
 })
 

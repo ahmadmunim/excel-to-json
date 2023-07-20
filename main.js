@@ -77,6 +77,7 @@ ipcMain.on('excel-path', (e, path) => {
                 }
                 i++;
             })
+            console.log('about to send')
             e.sender.send('send-json', jsonRow)
         }).catch((err) => {
             console.error('Error reading XLSX file:', err);
@@ -91,7 +92,7 @@ ipcMain.on('text', (_, text) => {
         title: 'Select the File Path to save',
         defaultPath: path.join(__dirname, '../sample.json'),
         buttonLabel: 'Save',
-        // Restricting the user to only JSON Files.
+        //Restricting the user to only JSON Files.
         filters: [
             {
                 name: 'json',
@@ -105,6 +106,7 @@ ipcMain.on('text', (_, text) => {
             console.log(file.filePath.toString());
               
             // Creating and Writing to the sample.json file
+            console.log(text)
             fs.writeFile(file.filePath.toString(), 
                          text, function (err) {
                 if (err) throw err;
