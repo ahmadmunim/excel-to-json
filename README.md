@@ -1,7 +1,7 @@
 # excel-to-json
 Converts data in a spreadsheet to a JSON object
 
-# What do you need:
+# Dependencies you need:
 npm, csv-parse, electron, read-excel-file (refer to package.json)
 
 ## To install dependencies:
