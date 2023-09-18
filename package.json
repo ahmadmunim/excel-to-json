@@ -3,7 +3,7 @@
   "type": "commonjs",
   "dependencies": {
     "csv-parse": "^5.4.0",
-    "electron": "^22.1.0",
+    "electron": "^22.3.24",
     "read-excel-file": "^5.6.1"
   },
   "scripts": {
